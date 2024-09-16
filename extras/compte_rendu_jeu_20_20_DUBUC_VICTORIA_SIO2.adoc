@@ -1,0 +1,22 @@
+= Compte Rendu du Jeu 20_20
+:nom: DUBUC
+:prenom: VICTORIA
+:classe: SIO2
+:date-version: 16-09-2024
+:version: 1.0
+
+[.center]
+image::/images/lycée-paul-claudel.png
+
+[.center]
+image::path_to_photo[Votre photo]
+
+== Introduction
+
+Ce document est un compte rendu de mes expériences et réflexions lors de l'exercice "Jeu 20_20". Il contient mes réponses aux questions posées, les difficultés rencontrées et les solutions adoptées.
+
+== Chapitre 1: [Nom du Chapitre]
+
+== Chapitre 2: [Nom du Chapitre]
+
+...
