@@ -93,7 +93,17 @@ class Answer
         return $this;
     }
 
+    public function __toString(): string
+    {
+        return "ID: " . ($this->id ?? 'null') . "<br>\n" .
+            "Content Text: " . $this->contentText . "<br>\n" .
+            "Content Code: " . ($this->contentCode ?? 'null') . "<br>\n" .
+            "Content Image: " . ($this->contentImage ?? 'null') . "<br>\n" .
+            "Is True: " . ($this->isTrue ? 'true' : 'false') . "<br>\n" .
+            "Created At: " . $this->createdAt->format('Y-m-d H:i:s') . "<br>\n" .
+            "Revised At: " . ($this->revisedAt ? $this->revisedAt->format('Y-m-d
+H:i:s') : 'null') . "<br>\n";
 
 
-
+    }
 }
