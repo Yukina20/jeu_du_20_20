@@ -1,8 +1,10 @@
 <?php
 
-namespace Dubuc\Entity;
-require_once '../src/Entity/Question.php';
-require_once '../src/Entity/Answer.php';
+namespace Dubuc\App;
+require_once '../src/Utils/autoloaders.php';
+
+spl_autoload_register('Dubuc\Utils\myAutoloadingWithPrefix');
+
 use Dubuc\Entity\Question;
 use Dubuc\Entity\Answer;
 

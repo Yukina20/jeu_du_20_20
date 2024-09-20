@@ -20,7 +20,7 @@ class Question
 
     private DateTimeImmutable $createdAt;
 
-    private ?DateTimeImmutable $reviseAdt = null;
+    private ?DateTimeImmutable $reviseAt = null;
 
     public function __construct()
     {
@@ -106,12 +106,12 @@ class Question
 
     public function getReviseAdt(): ?DateTimeImmutable
     {
-        return $this->reviseAdt;
+        return $this->reviseAt;
     }
 
     public function setReviseAdt(?DateTimeImmutable $reviseAdt): Question
     {
-        $this->reviseAdt = $reviseAdt;
+        $this->reviseAt = $reviseAdt;
 
         return $this;
     }
@@ -126,7 +126,7 @@ class Question
             "Is To Be Revised: " . ($this->isToBeRevised ? 'true' : 'false') .
             "<br>\n" .
             "Created At: " . $this->createdAt->format('Y-m-d H:i:s') . "<br>\n" .
-            "Revised At: " . ($this->revisedAt ? $this->revisedAt->format('Y-m-d
+            "Revised At: " . ($this->reviseAt ? $this->reviseAt->format('Y-m-d
 H:i:s') : 'null') . "<br>\n";
     }
 
