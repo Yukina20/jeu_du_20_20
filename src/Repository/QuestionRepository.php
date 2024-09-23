@@ -1,42 +1,49 @@
 <?php
 
 namespace Dubuc\Repository;
+
 use Dubuc\Entity\Question;
 
 class QuestionRepository
 {
-    private function getRandomQuestionByDifficulty(int $difficulty): Question
-    {
+private array $questions; // Supposons que vous avez un tableau de questions initialisé
 
-        $filteredQuestions = [];
+public function __construct(array $questions)
+{
+$this->questions = $questions; // Initialisation des questions via le constructeur
+}
 
-        foreach ($filteredQuestions as $question) {
-            if ($question->getLevel() === $difficulty) {
-                $filteredQuestions[] = $question;
-            }
-        }
+private function getRandomQuestionByDifficulty(int $difficulty): Question
+{
+$filteredQuestions = [];
 
-        if (empty($filteredQuestions)) {
-            return throw new \Exception("No questions found" . $difficulty);
-        }
+foreach ($this->questions as $question) { // Utilisez $this->questions
+if ($question->getLevel() === $difficulty) {
+$filteredQuestions[] = $question;
+}
+}
 
-        $randomKey = array_rand($filteredQuestions);
-        return $filteredQuestions[$randomKey];
+if (empty($filteredQuestions)) {
+throw new \Exception("No questions found for difficulty " . $difficulty); // Correction ici
+}
 
-    }
+$randomKey = array_rand($filteredQuestions);
+return $filteredQuestions[$randomKey];
+}
 
-    public function findRandomQuestionByDifficulty($difficulty)
-    {
-        $questions = $this->getRandomQuestionByDifficulty($difficulty);
-        return $questions;
-    }
+    /**
+     * @throws \Exception
+     */
+    public function findRandomQuestionByDifficulty(int $difficulty): Question
+{
+return $this->getRandomQuestionByDifficulty($difficulty);
+}
 
-    public function findRandomQuestionByDifficultyAndLevel($difficulty)
-    {
-
-        $questions = $this->getRandomQuestionByDifficulty($difficulty);
-
-        return $questions;
-    }
-
+/**
+* @throws \Exception
+*/
+public function findRandomQuestionByDifficultyAndLevel(int $difficulty): Question
+{
+return $this->getRandomQuestionByDifficulty($difficulty);
+}
 }
