@@ -19,11 +19,10 @@
 <body>
 <!--si le contenu d'entête de la page est défini-->
 <?php if (isset($view_header)): ?>
-    <header>
-        <?php echo $view_header; ?>
-    </header>
+<header>
+    <?php echo $view_header; ?>
+</header>
 <?php endif; ?>
-
 <!--si le contenu principal de la page est défini-->
 <?php if (isset($view_main)): ?>
     <main>
@@ -38,3 +37,4 @@
 <?php endif; ?>
 </body>
 </html>
+
