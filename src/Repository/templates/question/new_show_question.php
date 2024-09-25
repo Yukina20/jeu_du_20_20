@@ -3,7 +3,7 @@
 /**
  * Pour permettre l'inférence dans l'IDE (facultatif)
  *
- * @var Dubuc\Entity\Question $question 
+ * @var Dubuc\Entity\Question $question
  */
 ?>
 <article>
