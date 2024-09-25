@@ -6,44 +6,53 @@ use Dubuc\Entity\Question;
 
 class QuestionRepository
 {
-private array $questions; // Supposons que vous avez un tableau de questions initialisé
+    private $questions = [];
 
-public function __construct(array $questions)
-{
-$this->questions = $questions; // Initialisation des questions via le constructeur
-}
+    public function __construct() {
+        // Initialisation des questions (exemples)
+        $this->questions = [
+            (new Question())->setContentText('Qu\'est-ce qu\'une variable en programmation ?')->setLevel(1)->setCreatedAt(new \DateTime()),
+            (new Question())->setContentText('Quelle est la différence entre une boucle "for" et "while" ?')->setLevel(1)->setCreatedAt(new \DateTime()),
+            (new Question())->setContentText('Qu\'est-ce qu\'un pointeur en langage C ?')->setLevel(1)->setCreatedAt(new \DateTime()),
+            (new Question())->setContentText('Expliquez la différence entre HTTP et HTTPS.')->setLevel(2)->setCreatedAt(new \DateTime()),
+            (new Question())->setContentText('Qu\'est-ce que le polymorphisme en programmation orientée objet ?')->setLevel(2)->setCreatedAt(new \DateTime()),
+            (new Question())->setContentText('Définissez ce qu\'est un algorithme de tri rapide (quick sort).')->setLevel(2)->setCreatedAt(new \DateTime()),
+        ];
+    }
 
-private function getRandomQuestionByDifficulty(int $difficulty): Question
-{
-$filteredQuestions = [];
+    private function getRandomQuestionByDifficulty(int $difficulty): Question
+    {
+        $filteredQuestions = [];
 
-foreach ($this->questions as $question) { // Utilisez $this->questions
-if ($question->getLevel() === $difficulty) {
-$filteredQuestions[] = $question;
-}
-}
+        // Filtrer les questions par niveau de difficulté
+        foreach ($this->questions as $question) { // Utilisez $this->questions
+            if ($question->getLevel() === $difficulty) {
+                $filteredQuestions[] = $question;
+            }
+        }
 
-if (empty($filteredQuestions)) {
-throw new \Exception("No questions found for difficulty " . $difficulty); // Correction ici
-}
+        if (empty($filteredQuestions)) {
+            throw new \Exception("No questions found for difficulty " . $difficulty);
+        }
 
-$randomKey = array_rand($filteredQuestions);
-return $filteredQuestions[$randomKey];
-}
+        // Sélectionner une question aléatoire
+        $randomKey = array_rand($filteredQuestions);
+        return $filteredQuestions[$randomKey];
+    }
 
     /**
      * @throws \Exception
      */
     public function findRandomQuestionByDifficulty(int $difficulty): Question
-{
-return $this->getRandomQuestionByDifficulty($difficulty);
-}
+    {
+        return $this->getRandomQuestionByDifficulty($difficulty);
+    }
 
-/**
-* @throws \Exception
-*/
-public function findRandomQuestionByDifficultyAndLevel(int $difficulty): Question
-{
-return $this->getRandomQuestionByDifficulty($difficulty);
-}
+    /**
+     * @throws \Exception
+     */
+    public function findRandomQuestionByDifficultyAndLevel(int $difficulty): Question
+    {
+        return $this->getRandomQuestionByDifficulty($difficulty);
+    }
 }
