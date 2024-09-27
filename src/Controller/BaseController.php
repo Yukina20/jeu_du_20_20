@@ -16,4 +16,12 @@ class BaseController
 
     }
 
+    public static function renderViewDefinition(
+        string $viewDefinition, $data = []): void {
+        $viewDefinitionPath = self::getValidatedViewDefinitionPath($viewDefinition);
+
+        include $viewDefinitionPath;
+
+    }
+
 }
