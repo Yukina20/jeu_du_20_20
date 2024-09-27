@@ -26,8 +26,8 @@ class QuestionController
 
         $question = $questionRepository->findRandomQuestionByDifficulty($level);
 
-        BaseController::renderViewTemp(
-            'show_question_definition_temp',
+        BaseController::renderFromViewDefinition(
+            'show_question_definition',
             ['question' => $question]
         );
     }
