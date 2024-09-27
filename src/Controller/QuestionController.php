@@ -17,6 +17,19 @@ class QuestionController
 
         include '../Repository/templates/question/show_question.php';
 
+
+    }
+
+    public function showQuestionWithRenderView(int $level): void
+    {
+        $questionRepository = new QuestionRepository();
+
+        $question = $questionRepository->findRandomQuestionByDifficulty($level);
+
+        BaseController::renderViewTemp(
+            'show_question_definition_temp',
+            ['question' => $question]
+        );
     }
 
 }

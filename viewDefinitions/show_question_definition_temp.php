@@ -17,3 +17,10 @@ $view_main = ob_get_clean();
 //inclusion de la vue de "base" qui maintenant a accès aux variables
 $view_header, $view_main et $view_footer
 include __DIR__.'/../templates/base.php';
+
+<?php
+//Le chemin est exprimé depuis le fichier point d'entrée.
+$cssFiles = '<link type="text/css" rel="stylesheet"
+href="../assets/css/style.css" />';
+
+$jsFiles = '<script src="../assets/js/alert.js"></script>';
