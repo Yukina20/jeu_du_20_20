@@ -73,9 +73,9 @@ class ViewRender
 
     public const CSS_DIRECTORY_PATH = '../../assets/css/';
 
-    private static function buildPathToCssFilename(string $view): string
+    private static function buildPathToCssFilename(string $cssFilename): string
     {
-        $filePath = self::CSS_DIRECTORY_PATH . $view . '.css';
+        $filePath = self::CSS_DIRECTORY_PATH .$cssFilename. '.css';
 
         return $filePath;
     }
@@ -87,6 +87,18 @@ class ViewRender
         $filePath = self::JS_DIRECTORY_PATH . $jsFilename . '.js';
         return $filePath;
     }
+
+    public static function getCssLinks(array $fileCss): string
+    {
+        $cssLinks = "";
+        foreach ($fileCss as $filename) {
+            $cssLinks .= self::buildPathToCssFilename($filename);
+            $cssLinks .= "\n".'<link rel="stylesheet" href="'.$cssPath.'">';
+        }
+        return $cssLinks;
+    }
+
+
 
     public static function getJsScripts(array $fileJs): string
     {
