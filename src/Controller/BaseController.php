@@ -8,30 +8,31 @@ class BaseController
 
     public static function renderViewTemp(
         string $viewDefinition,
-        array $data = []
-    ): void {
+        array  $data = []
+    ): void
+    {
         extract($data);
 
-        include __DIR__.'/../../viewDefinitions/'.$viewDefinition.'.php';
+        include __DIR__ . '/../../viewDefinitions/' . $viewDefinition . '.php';
 
     }
 
     public static function renderViewDefinition(
-        string $viewDefinition, $data = []): void {
+        string $viewDefinition, $data = []): void
+    {
         $viewDefinitionPath = self::getValidatedViewDefinitionPath($viewDefinition);
 
         include $viewDefinitionPath;
 
     }
 
-    public static function renderFromViewDefinition(string $viewDefinition, $data = []): void {
-        ViewRender::rednerFromViewDefinition($viewDefinition);
-    }
-
-    public static function renderFromViewDefintion(string $viewDefinition, $data = []): void {
+    /**
+     * @throws \Exception
+     */
+    public static function renderFromViewDefinition(string $viewDefinition, $data = []): void
+    {
         ViewRender::setData($data);
-
-        ViewRender::renderrFromViewDefinition($viewDefinition);
+        ViewRender::renderFromViewDefinition($viewDefinition);
     }
 
 }

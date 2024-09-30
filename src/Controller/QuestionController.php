@@ -20,6 +20,9 @@ class QuestionController
 
     }
 
+    /**
+     * @throws \Exception
+     */
     public function showQuestionWithRenderView(int $level): void
     {
         $questionRepository = new QuestionRepository();
@@ -27,7 +30,7 @@ class QuestionController
         $question = $questionRepository->findRandomQuestionByDifficulty($level);
 
         BaseController::renderFromViewDefinition(
-            'show_question_definition',
+            'show_question_definition_temp',
             ['question' => $question]
         );
     }

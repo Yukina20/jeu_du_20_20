@@ -11,12 +11,12 @@ class QuestionRepository
     public function __construct() {
         // Initialisation des questions (exemples)
         $this->questions = [
-            (new Question())->setContentText('Qu\'est-ce qu\'une variable en programmation ?')->setLevel(1)->setCreatedAt(new \DateTime()),
-            (new Question())->setContentText('Quelle est la différence entre une boucle "for" et "while" ?')->setLevel(1)->setCreatedAt(new \DateTime()),
-            (new Question())->setContentText('Qu\'est-ce qu\'un pointeur en langage C ?')->setLevel(1)->setCreatedAt(new \DateTime()),
-            (new Question())->setContentText('Expliquez la différence entre HTTP et HTTPS.')->setLevel(2)->setCreatedAt(new \DateTime()),
-            (new Question())->setContentText('Qu\'est-ce que le polymorphisme en programmation orientée objet ?')->setLevel(2)->setCreatedAt(new \DateTime()),
-            (new Question())->setContentText('Définissez ce qu\'est un algorithme de tri rapide (quick sort).')->setLevel(2)->setCreatedAt(new \DateTime()),
+            (new Question())->setContentText('Qu\'est-ce qu\'une variable en programmation ?')->setLevel(1)->setCreatedAt(new \DateTimeImmutable()),
+            (new Question())->setContentText('Quelle est la différence entre une boucle "for" et "while" ?')->setLevel(1)->setCreatedAt(new \DateTimeImmutable()),
+            (new Question())->setContentText('Qu\'est-ce qu\'un pointeur en langage C ?')->setLevel(1)->setCreatedAt(new \DateTimeImmutable()),
+            (new Question())->setContentText('Expliquez la différence entre HTTP et HTTPS.')->setLevel(2)->setCreatedAt(new \DateTimeImmutable()),
+            (new Question())->setContentText('Qu\'est-ce que le polymorphisme en programmation orientée objet ?')->setLevel(2)->setCreatedAt(new \DateTimeImmutable()),
+            (new Question())->setContentText('Définissez ce qu\'est un algorithme de tri rapide (quick sort).')->setLevel(2)->setCreatedAt(new \DateTimeImmutable()),
         ];
     }
 
