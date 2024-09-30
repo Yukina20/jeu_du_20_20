@@ -34,7 +34,7 @@ class ViewRender
         $viewDefinitionPath = self::getValidatedViewDefinitionPath($viewDefinition);
 
         extract(self::$data);
-        ViewRender::renderFromViewDefinition($viewDefinition);
+        //ViewRender::renderFromViewDefinition($viewDefinition);
         include $viewDefinitionPath;
     }
 
