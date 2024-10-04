@@ -17,8 +17,8 @@ class Question
 
     public function __construct(string $contentText, int $level)
     {
-        $this->contentText = $contentText;
-        $this->level = $level;
+        $this->setContentText($contentText);
+        $this->setLevel($level);
         $this->createdAt = new DateTimeImmutable();
     }
 
@@ -48,6 +48,9 @@ class Question
 
     public function setContentText(string $contentText): self
     {
+        if (empty($contentText)) {
+            throw new InvalidArgumentException('Le texte de la question ne peut pas être vide.');
+        }
         $this->contentText = $contentText;
         return $this;
     }
@@ -74,6 +77,12 @@ class Question
         if (count($this->answers) >= 4) {
             throw new RuntimeException('Une question ne peut pas avoir plus de 4 réponses.');
         }
+
+        // Vérifie qu'il n'y a pas plus d'une bonne réponse dans la collection
+        if ($answer->isTrue() && count(array_filter($this->answers, fn($a) => $a->isTrue())) >= 1) {
+            throw new RuntimeException('Il ne peut y avoir qu\'une seule bonne réponse.');
+        }
+
         $this->answers[] = $answer;
         return $this;
     }
@@ -81,7 +90,7 @@ class Question
     // Associer une collection de réponses
     public function setAnswers(array $answers): self
     {
-        // Vérifier si la collection contient 4 réponses
+        // Vérifier si la collection contient exactement 4 réponses
         if (count($answers) !== 4) {
             throw new InvalidArgumentException('Une question doit être associée à exactement 4 réponses.');
         }
